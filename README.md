@@ -36,4 +36,4 @@ python snake_game.py
 - A cobra pode atravessar as bordas da tela
 
 ## Desenvolvido por
-[Seu Nome] 
+[Henrique Takeshi Goto] 
