@@ -1,0 +1,105 @@
+
+CASOS DE USO - JOGO DA COBRA
+
+1 — Iniciar o Jogo
+Ator: Jogador
+Descrição: O jogador executa o programa e o jogo da cobra é iniciado, com a cobra posicionada no centro da tela e uma comida gerada aleatoriamente.
+Pré-condição: O programa deve estar corretamente instalado e o pygame configurado.
+Fluxo principal:
+  1. O jogador executa o programa.
+  2. A janela do jogo é aberta.
+  3. A cobra é posicionada no centro do grid.
+  4. Uma comida é posicionada aleatoriamente no grid.
+  5. A pontuação é inicializada em zero.
+  6. O jogo inicia o loop principal.
+Pós-condição: O jogo está em execução aguardando as ações do jogador.
+
+2 — Movimentar a Cobra
+Ator: Jogador
+Descrição: O jogador utiliza as teclas direcionais para alterar a direção da cobra, evitando colisões e buscando a comida.
+Pré-condição: O jogo deve estar em execução e a cobra viva.
+Fluxo principal:
+  1. O jogador pressiona uma das teclas direcionais: ↑, ↓, ← ou →.
+  2. O sistema verifica se a nova direção não é a oposta à direção atual.
+  3. Se for válida, a direção da cobra é atualizada.
+  4. A cobra continua a se mover automaticamente na nova direção.
+Pós-condição: A cobra se move continuamente, atualizando sua posição conforme a direção indicada.
+Fluxo alternativo: Se o jogador pressionar a tecla oposta à direção atual, o comando é ignorado.
+
+3 — Comer a Comida
+Ator: Jogador
+Descrição: A cobra alcança a posição onde a comida está, faz crescer seu corpo e aumenta a pontuação.
+Pré-condição: O jogo deve estar em execução.
+Fluxo principal:
+  1. A cabeça da cobra alcança a posição da comida.
+  2. A cobra marca uma flag interna (crescer = True) para aumentar de tamanho.
+  3. A comida é reposicionada aleatoriamente no grid.
+  4. O placar é incrementado em 1 ponto.
+  5. Um efeito sonoro de "comer" é acionado (caso implementado).
+Pós-condição: A cobra aumenta de tamanho e o jogador acumula pontos.
+
+4 — Colidir com o Próprio Corpo
+Ator: Sistema
+Descrição: A cobra colide com uma parte do próprio corpo, encerrando o jogo.
+Pré-condição: A cobra deve ter mais de um segmento.
+Fluxo principal:
+  1. O sistema detecta que a nova posição da cabeça coincide com uma das posições dos segmentos do corpo.
+  2. O jogo é encerrado.
+  3. O efeito sonoro de "game over" é acionado (caso implementado).
+  4. O sistema exibe a tela de "Fim de Jogo" com a pontuação final e instrução para reiniciar.
+Pós-condição: O jogo fica pausado, aguardando a ação do jogador para reiniciar.
+
+5 — Reiniciar o Jogo
+Ator: Jogador
+Descrição: Após o término de uma partida, o jogador pode pressionar a tecla espaço para reiniciar o jogo.
+Pré-condição: O jogo deve estar na tela de "Fim de Jogo".
+Fluxo principal:
+  1. O sistema exibe a mensagem de "Fim de Jogo".
+  2. O jogador pressiona a tecla ESPAÇO.
+  3. O sistema reinicia:
+     - A cobra é reiniciada na posição inicial com um único segmento.
+     - A comida é reposicionada aleatoriamente.
+     - A pontuação é zerada.
+  4. O jogo retorna ao loop principal.
+Pós-condição: O jogo reinicia com o estado limpo.
+
+6 — Encerrar o Jogo
+Ator: Jogador
+Descrição: O jogador fecha a janela do jogo a qualquer momento.
+Pré-condição: O jogo deve estar em execução ou na tela de "Fim de Jogo".
+Fluxo principal:
+  1. O jogador clica no botão de fechar a janela ou pressiona ALT+F4.
+  2. O sistema detecta o evento QUIT.
+  3. O pygame é finalizado e o programa é encerrado.
+Pós-condição: O programa encerra completamente.
+
+7 — Exibir Placar
+Ator: Sistema
+Descrição: Durante a execução do jogo, a pontuação do jogador é exibida continuamente no canto superior da tela.
+Pré-condição: O jogo deve estar em execução.
+Fluxo principal:
+  1. A cada ciclo de atualização do jogo, o sistema desenha o placar na tela.
+  2. O placar é atualizado sempre que a cobra come uma comida.
+Pós-condição: O jogador pode acompanhar sua pontuação em tempo real.
+
+8 — Desenhar o Grid e Elementos
+Ator: Sistema
+Descrição: O sistema desenha a grade, a cobra, a comida e o placar na tela a cada frame.
+Pré-condição: O jogo deve estar em execução.
+Fluxo principal:
+  1. O sistema limpa a tela.
+  2. A grade do jogo é desenhada.
+  3. A cobra é desenhada na posição atual.
+  4. A comida é desenhada na posição atual.
+  5. O placar é desenhado.
+  6. A tela é atualizada.
+Pós-condição: A interface visual do jogo é mantida e atualizada constantemente.
+
+9 — Ajustar Velocidade do Jogo
+Ator: Sistema
+Descrição: O sistema controla a velocidade de atualização do jogo para garantir uma jogabilidade fluida.
+Pré-condição: O jogo deve estar em execução.
+Fluxo principal:
+  1. A cada ciclo do loop principal, o sistema aguarda um tempo determinado pela constante VELOCIDADE.
+  2. O próximo frame é executado após esse tempo.
+Pós-condição: A velocidade de movimentação da cobra é regulada.

@@ -1,0 +1,71 @@
+<<interface>> Renderizavel
++ desenhar(superficie)
+
+<<interface>> Movivel
++ mover()
+
+<<abstract>> Entidade
+- posicao: tuple
+- cor: tuple
++ atualizar(): abstract
++ desenhar(superficie): abstract
+
+---------------------------------------------------
+
+Segmento
+- posicao: tuple
+
+---------------------------------------------------
+
+EfeitoSonoro
+- som_comida
+- som_game_over
++ carregar_sons()
++ tocar_comida()
++ tocar_game_over()
+
+---------------------------------------------------
+
+Placar
+- pontuacao: int
+- fonte
++ incrementar()
++ resetar()
++ desenhar(superficie)
+
+---------------------------------------------------
+
+Cobra
+: Entidade
+: Renderizavel
+: Movivel
+- segmentos: list<Segmento>
+- direcao: tuple
+- crescer: bool
+- efeito_sonoro: EfeitoSonoro
++ obter_posicao_cabeca(): tuple
++ mover(): tuple
++ atualizar(): bool
++ desenhar(superficie)
++ reiniciar()
++ processar_teclas()
+
+---------------------------------------------------
+
+Comida
+: Entidade
+: Renderizavel
++ posicao_aleatoria()
++ atualizar()
++ desenhar(superficie)
+
+---------------------------------------------------
+
+Jogo
+- cobra: Cobra
+- comida: Comida
+- placar: Placar
+- fim_jogo: bool
++ desenhar_grade(superficie)
++ mostrar_fim_jogo(superficie)
++ executar()
